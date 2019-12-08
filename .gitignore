@@ -4,7 +4,10 @@ node_modules
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-client/node_modules
+todos_server/node_modules
+calendar_server/node_modules
+search_server/node_modules
+webapp/node_modules
 client/.pnp
 client/.pnp.js
 
