@@ -61,4 +61,10 @@ router.delete('/:id', auth, (req, res) => {
     .catch(err => res.status(404).json({success: false}))
 })
 
+router.get('/search', (req, res) => {
+  Event.find({})
+    .sort({ date: -1 })
+    .then(events => res.json(events));
+})
+
 module.exports = router;
