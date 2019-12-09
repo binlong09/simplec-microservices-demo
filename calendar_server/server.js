@@ -10,10 +10,7 @@ const app = express();
 // Body parser Middleware
 app.use(express.json());
 
-
 const db = 'mongodb://calendar_db/calendar'
-console.log(process.env.MONGO_DB_URI)
-
 
 // Connect to Mongo
 mongoose
@@ -26,7 +23,6 @@ mongoose
 
 // Use Routes
 app.use('/api/users', require('./routes/api/users'));
-app.use('/api/todos', require('./routes/api/todos'));
 app.use('/api/events', require('./routes/api/events'));
 app.use('/api/auth', require('./routes/api/auth'));
 

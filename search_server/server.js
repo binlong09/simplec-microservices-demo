@@ -3,6 +3,9 @@ const express = require("express");
 
 const app = express();
 
+// Body parser Middleware
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({ msg: "search" });
 });
@@ -17,10 +20,12 @@ app.get("/search", async (req, res) => {
     const calendarJson = await calendarResponse.json();
     const todosJson = await todosResponse.json();
 
-    res.json({ video: calendarJson, book: todosJson });
+    res.json({ calendar: calendarJson, todos: todosJson });
   } catch (e) {
     res.status(500).json(e);
   }
 });
 
-module.exports = app;
+const port = process.env.PORT || 5000
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
