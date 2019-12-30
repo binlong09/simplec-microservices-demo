@@ -1,25 +1,25 @@
 import {
-  GET_EVENTS,
-  EVENTS_LOADING
-} from '../actions/types';
+  GET_TODOS,
+  TODOS_LOADING
+} from '../actions/types'
 
 const initialState = {
-  events: [],
+  todos: [],
   isLoading: false
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case EVENTS_LOADING:
-      return {
-        ...state,
-        isLoading: true
-      }
-    case GET_EVENTS:
+    case GET_TODOS:
       return {
         ...state,
         isLoading: false,
         ...action.payload
+      }
+    case TODOS_LOADING:
+      return {
+        isLoading: true,
+        ...state
       }
     default:
       return state;

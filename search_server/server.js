@@ -13,8 +13,8 @@ app.get("/", (req, res) => {
 app.get("/search", async (req, res) => {
   try {
     // we don't want to await we want both request to run at the same time
-    const calendarPromise = fetch("http://calendar:5001/api/events/search");
-    const todosPromise = fetch("http://todos:5000/api/todos/search");
+    const calendarPromise = fetch("http://calendar_service:5001/api/events/search");
+    const todosPromise = fetch("http://todos_services:5000/api/todos/search");
     const promises = [calendarPromise, todosPromise];
     const [calendarResponse, todosResponse] = await Promise.all(promises);
     const calendarJson = await calendarResponse.json();

@@ -39,11 +39,11 @@ export class Login extends Component {
     }
   }
 
-  handleLogin = async e => {
+  handleLogin = async(e) => {
     e.preventDefault();
 
     const { email, password } = this.state;
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, error } = this.props;
 
     const user = {
       email,
@@ -52,7 +52,9 @@ export class Login extends Component {
 
     // Attemp to login
     await this.props.login(user);
-    if (isAuthenticated) { await this.props.history.push('/Home') }
+
+    console.log(this.props)
+    if (Object.keys(error.msg).length == 0) { this.props.history.push('/Home') }
   }
 
   handleRegister = e => {

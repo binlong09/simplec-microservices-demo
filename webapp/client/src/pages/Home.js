@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar/NavBar';
-import Calendar from '../components/Calendar/Calendar';
+import MyCalendar from '../components/Calendar/Calendar';
 import TodoList from '../components/TodoList/TodoList';
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { Layout } from 'antd';
 
 export class Home extends Component {
+
   render() {
     const { Header, Sider, Content } = Layout;
+
     return (
       <div>
         <Layout >
@@ -21,14 +23,12 @@ export class Home extends Component {
               width = {300}
               theme = "light"
             >
-            { data.map(item => (
-              <TodoList item={item}/>
-            ))}
+            <TodoList/>
 
             </Sider>
             <div className = 'home-calendar_wrapper' style = {{marginLeft: 300}}>
             <Content style={{ height: "90%" }}>
-              <Calendar />
+              <MyCalendar/>
             </Content>
             </div>
 

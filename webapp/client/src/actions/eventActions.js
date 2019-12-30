@@ -1,21 +1,9 @@
-import axios from 'axios';
+import { axiosInstance } from '../services/client'
 import { returnErrors } from './errorActions';
 import {
   GET_EVENTS,
-  GET_EVENTS_SUCCESS,
-  GET_EVENTS_FAIL,
-  CREATE_EVENTS,
-  CREATE_EVENTS_SUCCESS,
-  CREATE_EVENTS_FAIL,
-  UPDATE_EVENTS,
-  UPDATE_EVENTS_SUCCESS,
-  UPDATE_EVENTS_FAIL,
-  DELETE_EVENTS,
-  DELETE_EVENTS_SUCCESS,
-  DELETE_EVENTS_FAIL,
   EVENTS_LOADING
 } from './types';
-import { tokenConfig } from './authActions';
 
 export const getEvents = () => dispatch => {
   dispatch({ type: EVENTS_LOADING });
@@ -23,11 +11,11 @@ export const getEvents = () => dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjODgxODNhMzcwNDkzOWVjMGM0OTE5OCIsImlhdCI6MTU1NzQ1NTg3NCwiZXhwIjoxNTU3NDU5NDc0fQ.rf7Nu8C7FscwtI_qJvsNsZzHEEKmpVTRVegHN-oA4OA'
+      'x-auth-token': localStorage.getItem('token')
     }
   }
 
-  axios
+  axiosInstance
     .get('/api/events', config)
     .then(res => dispatch({
         type: GET_EVENTS,
@@ -39,10 +27,4 @@ export const getEvents = () => dispatch => {
       console.log(err)
     );
   console.log("get event called")
-}
-
-export const createEvents = (date, text) => {
-  console.log("Im here in actions boy");
-  console.log(date.format());
-  console.log(text);
 }

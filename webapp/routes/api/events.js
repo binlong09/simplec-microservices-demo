@@ -11,7 +11,7 @@ const Event = require('../../models/event');
 router.get('/', auth, (req, res) => {
   var page = parseInt(req.query.page) || 1;
   page -= 1;
-  var limit = parseInt(req.query.limit) || 3;
+  var limit = parseInt(req.query.limit) || 25;
   query = { _user: res.locals.user.id }
   Event.find(query)
     .sort({ date: -1 })
@@ -45,6 +45,7 @@ router.post('/', auth, (req, res) => {
     _event: req.body._event,
     title: req.body.title,
     start: req.body.start,
+    end: req.body.end,
     allDay: req.body.allDay,
     description: req.body.description
   });

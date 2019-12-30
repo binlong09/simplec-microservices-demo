@@ -1,9 +1,12 @@
 const express = require('express');
+var cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
 
 const app = express();
+
+app.use(cors())
 
 // Body parser Middleware
 app.use(express.json());
@@ -23,6 +26,8 @@ mongoose
 // Use Routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/events', require('./routes/api/events'));
+app.use('/api/todos', require('./routes/api/todos'));
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {

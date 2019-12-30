@@ -1,0 +1,13 @@
+version: '3'
+services:
+  calendar_server:
+    build: './'
+    ports:
+      - 5000:5000
+    environment:
+       - DB_URL=mongodb://calendar_db:27017/calendar
+
+  calendar_db:
+    image: mongo
+    ports:
+      - "27017:27017"
