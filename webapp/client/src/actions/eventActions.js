@@ -1,4 +1,5 @@
 import { axiosInstance } from '../services/client'
+import axios from 'axios'
 import { returnErrors } from './errorActions';
 import {
   GET_EVENTS,
@@ -15,7 +16,7 @@ export const getEvents = () => dispatch => {
     }
   }
 
-  axiosInstance
+  axios
     .get('/api/events', config)
     .then(res => dispatch({
         type: GET_EVENTS,
@@ -26,5 +27,4 @@ export const getEvents = () => dispatch => {
       // dispatch(returnErrors(err.response.data, err.response.status))
       console.log(err)
     );
-  console.log("get event called")
 }

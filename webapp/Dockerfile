@@ -4,8 +4,10 @@ COPY . /src
 
 WORKDIR /src
 
-RUN npm run setup
+RUN npm install
+
+RUN npm install --prefix
 
 EXPOSE 5000
 
-CMD npm run both
+CMD npm run start

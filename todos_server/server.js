@@ -1,15 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const path = require('path');
 const config = require('config');
 
 const app = express();
 
+app.use(cors())
+
 // Body parser Middleware
 app.use(express.json());
 
+
 // DB Config
-const db = process.env.DB_URL
+const db = process.env.MONGO_DB_URI
 
 // Connect to Mongo
 mongoose

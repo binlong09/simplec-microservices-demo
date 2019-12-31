@@ -2,15 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
+const cors = require('cors');
 
 require('dotenv').config();
 
 const app = express();
 
+app.use(cors())
+
 // Body parser Middleware
 app.use(express.json());
 
-const db = process.env.DB_URL
+const db = process.env.MONGO_DB_URI
 
 // Connect to Mongo
 mongoose
@@ -24,6 +27,9 @@ mongoose
 // Use Routes
 app.use('/api/events', require('./routes/api/events'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.get("/api/events/check", async (req, res) => {
+  res.json({ status: 'it works' })
+});
 
 const port = process.env.PORT || 5000
 

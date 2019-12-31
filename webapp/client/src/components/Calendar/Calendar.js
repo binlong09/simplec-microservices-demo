@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { axiosInstance } from '../../services/client';
 
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
@@ -134,6 +135,8 @@ export class MyCalendar extends React.Component {
 
   dragFromOutside = (event) => {
     console.log(event)
+    axiosInstance.get('/api/events/check')
+      .then(() => console.log('success'))
   }
 
   componentDidMount() {
@@ -143,7 +146,11 @@ export class MyCalendar extends React.Component {
 	render() {
     const localizer = momentLocalizer(moment)
 
-    const { events } = this.props
+    console.log(this.props)
+
+    const { events } = this.props.events
+
+    console.log('List of events')
     console.log(events)
 
     return(
@@ -168,7 +175,8 @@ export class MyCalendar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.event.events
+  // events: state.event.events
+  events: state.event
 })
 
 export default connect(mapStateToProps, { getEvents })(MyCalendar)
