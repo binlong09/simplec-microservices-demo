@@ -1,4 +1,3 @@
 {
-  "mongoURI": "mongodb+srv://nghia:nghia123@mernshoppinglist-unfuj.mongodb.net/test?retryWrites=true",
   "jwtSecret": "simpleSecret"
 }

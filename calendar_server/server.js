@@ -26,10 +26,6 @@ mongoose
 
 // Use Routes
 app.use('/api/events', require('./routes/api/events'));
-app.use('/api/auth', require('./routes/api/auth'));
-app.get("/api/events/check", async (req, res) => {
-  res.json({ status: 'it works' })
-});
 
 const port = process.env.PORT || 5000
 

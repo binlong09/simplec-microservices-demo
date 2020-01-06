@@ -6,7 +6,9 @@ WORKDIR /src
 
 RUN npm install
 
-RUN npm install --prefix
+RUN cd client && npm install
+
+RUN cd client && npm run build
 
 EXPOSE 5000
 
