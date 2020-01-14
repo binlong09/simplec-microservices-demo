@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simplec-webapp
+
+spec:
+  # This defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to
+  selector:
+    app: webapp
+
+  ports:
+    - name: http
+      port: 5000
+
+  # 1. LoadBalancer
+  # 2. Cluster IP: only accessible to internal services, this will give the service
+  # a stable IP address
+  # 3. NodePort: Expose a port through a node
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-queue
+
+spec:
+  # This defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to
+  selector:
+    app: queue
+
+  ports:
+    - name: http
+      port: 8161
+
+    - name: endpoint
+      port: 61616 # port inside container
+
+  # 1. LoadBalancer
+  # 2. Cluster IP: only accessible to internal services, this will give the service
+  # a stable IP address
+  # 3. NodePort: Expose a port through a node
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-position-tracker
+
+spec:
+  # This defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to
+  selector:
+    app: position-tracker
+
+  ports:
+    - name: http
+      port: 8080
+
+  # 1. LoadBalancer
+  # 2. Cluster IP: only accessible to internal services, this will give the service
+  # a stable IP address
+  # 3. NodePort: Expose a port through a node
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-api-gateway
+
+spec:
+  # This defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to
+  selector:
+    app: api-gateway
+
+  ports:
+    - name: http
+      port: 8080
+
+  # 1. LoadBalancer
+  # 2. Cluster IP: only accessible to internal services, this will give the service
+  # a stable IP address
+  # 3. NodePort: Expose a port through a node
+  type: ClusterIP

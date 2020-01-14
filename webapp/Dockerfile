@@ -4,12 +4,8 @@ COPY . /src
 
 WORKDIR /src
 
-RUN npm install
-
-RUN cd client && npm install
-
-RUN cd client && npm run build
+RUN npm install --production
 
 EXPOSE 5000
 
-CMD npm run start
+CMD npm start

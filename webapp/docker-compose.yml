@@ -1,0 +1,12 @@
+version: '3'
+services:
+  webapp:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./:/src
+      - /app/node_modules

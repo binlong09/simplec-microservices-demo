@@ -136,7 +136,7 @@ export class Login extends Component {
             <strong>S I M PL E</strong><span>&nbsp;&nbsp;</span><strong>C</strong>
           </div>
           <div className="auth-welcomeText">
-            Welcome Back! Please login to your account
+            Welcome Back! Please login to continue
           </div>
           <Form className="login-form">
             { this.state.msg ? <Alert type="error" message={this.state.msg}/> : null }

@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 1
+  # minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: webapp
+  template: # template for the pods
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: ndangellucian/simplec-webapp:latest
+        env:
+          - name: NODE_ENV
+            value: production
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos
+spec:
+  replicas: 1
+  # minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: todos
+  template: # template for the pods
+    metadata:
+      labels:
+        app: todos
+    spec:
+      containers:
+      - name: todos
+        image: ndangellucian/simplec-todos-service:latest
+        env:
+          - name: MONGO_DB_URI
+            value: mongodb://todos_db/todos
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calendar
+spec:
+  replicas: 1
+  # minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: calendar
+  template: # template for the pods
+    metadata:
+      labels:
+        app: calendar
+    spec:
+      containers:
+      - name: calendar
+        image: ndangellucian/simplec-calendar-service:latest
+        env:
+          - name: MONGO_DB_URI
+            value: mongodb://calendar_db/calendar
+
+---
+apiVersion: apps/v1
+kind: Deployment
+meta:
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config

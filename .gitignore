@@ -8,6 +8,7 @@ todos_server/node_modules
 calendar_server/node_modules
 search_server/node_modules
 webapp/node_modules
+auth_server/node_modules
 client/.pnp
 client/.pnp.js
 

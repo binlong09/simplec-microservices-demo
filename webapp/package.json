@@ -1,29 +1,40 @@
 {
-  "name": "simplec",
-  "version": "1.0.0",
-  "description": "Awesome simple productivity full stack web application",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "both": "node server.js & npm start --prefix client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "setup": "npm install && npm install --prefix client && npm run build --prefix client"
-  },
-  "author": "Simple Coders",
-  "license": "MIT",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^4.1.0",
-    "config": "^3.0.1",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.0",
-    "mongoose": "^5.4.19"
+    "antd": "^3.15.0",
+    "axios": "^0.18.0",
+    "fullcalendar": "^3.10.0",
+    "jquery": "^3.3.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "moment": "^2.24.0",
+    "react": "^16.8.4",
+    "react-big-calendar": "^0.23.0",
+    "react-dnd": "^7.3.2",
+    "react-dnd-html5-backend": "^7.2.0",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   },
-  "devDependencies": {
-    "nodemon": "^1.19.4"
-  }
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {}
 }
